@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <title>CSS Style Previewer</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="main.js" defer></script>
+
+</head>
+<body>
+        <header>
+        <h1><a href="../homepage.html">80 Days, 80 Projects</a></h1>
+        <nav id="navBar">
+            <ul>
+                <li><a href="../homepage.html">HOME</a></li>
+                <li><a href="../beginnerProj.html">BEGINNERS</a></li>
+                <li><a href="../MediumProj.html">MEDIUM</a></li>
+                <li><a href="../AdvancedProj.html">ADVANCED</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="content">
+        <div id="left">
+            <div class="contentBubble">
+                <h2>80 Days, 80 Projects</h2><hr>
+                <h3>CSS Style Previewer</h3>
+                <ul>
+                    <li>DATE: 11-6-26</li>
+                    <li>PROJECT #: 8080-002</li>
+                    <li>This Program is made to take form data and make and adjustment to CSS Styling of an element. This will be broken up into the form, and the output box. This project can have many input forms but only one output box is needed. After we get working method, we will then have data saved to paste an output of how to style the CSS document with that element's properties.</li>
+                </ul>
+            </div>
+            <!--Form-->
+            <div id="formContainer">
+                <form id="formColorSet">
+                    <label for="colorsetValue">Choose your <k id="rainbow">Colorset!</k></label><br>
+                    <input type="radio" id="neutral" name="colorsetInput" value="neutral">
+                    <label for="neutral">Neutral Tones</label>
+                    <input type="radio" id="warm" name="colorsetInput" value="warm">
+                    <label for="warm">Warm Tones</label>
+                    <input type="radio" id="cool" name="colorsetInput" value="cool">
+                    <label for="cool">Cool Tones</label>
+                </form><br>
+                <form id="formBorderSize">
+                    <label for="borderSizeValue">Choose your <strong>BORDER SIZE!</strong></label><br>
+                    <input type="radio" id="small" name="borderSizeInput" value="small">
+                    <label for="small">Small</label>
+                    <input type="radio" id="medium" name="borderSizeInput" value="medium">
+                    <label for="medium">Medium</label>
+                    <input type="radio" id="large" name="borderSizeInput" value="large">
+                    <label for="large">Large</label>
+                </form><br>
+                <form id="formBorderType">
+                    <label for="borderTypeValue">Choose your border type!</label>
+                    <select id="borderType" name="borderTypeInput">
+                        <option value="" disabled selected>Select a border type</option>
+                        <option value="solid">Solid</option>
+                        <option value="dashed">Dashed</option>
+                        <option value="dotted">Dotted</option>
+                        <option value="double">Double</option>
+                        <option value="groove">Groove</option>
+                        <option value="ridge">Ridge</option>
+                        <option value="inset">Inset</option>
+                        <option value="outset">Outset</option>
+                    </select>
+                </form><br>
+                <form id="formBorderRadius">
+                    <label for="borderRadiusValue">Choose your border radius!(in px or %)</label>
+                    <input type="text" id="borderRadius" name="borderRadiusInput">
+                    <button type="submit">Submit</button>
+                </form>
+
+            </div>
+        </div>
+        <br>
+        <!--Output Box-->
+        <div id="right">
+            <div id="outputContainer">
+                <h4 id="outputTextH">Example Output</h4>
+                <p id="outputTextP">Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
+                    Laudantium porro animi, molestias provident eum dolores natus <br>
+                    fugit labore recusandae incidunt sequi odio aliquam,<br>
+                    odit quasi iste corporis quas, illum voluptates.</p>
+
+            </div>
+            <br>
+            <!--Output CSS-->
+            <div id="outputContainer2">
+                <h3 id="outputTextHCSS">Output CSS</h3>
+                <pre id="outputTextCSS"></pre>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Footer Message</p>
+    </footer>
+</body>
+</html>

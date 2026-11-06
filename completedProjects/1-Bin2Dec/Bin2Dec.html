@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <title>Example Page for Bin2Dec Project</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>80 Days, 80 Projects</h1>
+        <nav id="navBar">
+            <ul>
+                <li><a href="../homepage.html">HOME</a></li>
+                <li><a href="../beginnerProj.html">BEGINNERS</a></li>
+                <li><a href="../MediumProj.html">MEDIUM</a></li>
+                <li><a href="../AdvancedProj.html">ADVANCED</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="content">
+        <h1>Bin2Dec</h1>
+        <h2>Convert Binary Number into human-readable integer</h2>
+        <form id="testForm">
+            <label for="binValue">Binary Value:</label><br>
+            <input type="text" id="binInput" name="binInput">
+            <button type="submit" id="submitBtn">Calculate</button>
+        </form>
+        <div id="testingOutput">
+            <p id="testingOutputText"></p>
+        </div>
+        <script>
+            // Create a function to check if the input is a binary number
+            function checkIfBin(binaryValue) {
+                // Run a for loop through each character in the string
+                for (let i = 0; i < binaryValue.length; i = i + 1) {
+                    // Return 1 on success, 0 on fail
+                    if (Number(binaryValue[i]) <= 1 & Number(binaryValue[i]) >= 0) {
+                        return 1;
+                    }
+                    else {
+                        return 0;
+                    }
+                }
+            }
+
+            // Function to convert binary number into integer
+            function bin2dec(binaryValue) {
+                // Run binary number check
+                if (checkIfBin(binaryValue) == 1) {
+                    // Establish variables into memory
+                    let i = 0;
+                    let output = 0;
+                    // while loop that only iterates the amount of times for the char length of string
+                    while(i < binaryValue.length) {
+                        // Binary conversion function
+                        output = output + (Number(binaryValue[i]) * (2 ** (binaryValue.length - i - 1)));
+                        i = i + 1;
+                    }
+                    return "Output: " + output;
+                }
+                // Error Message
+                else {
+                    return "ERROR: Please Input a binary number."
+                }
+            }
+            // Create input function from form
+            function takeInput() {
+                // Establish variables into memory
+                const form = document.getElementById("testForm");
+                const binaryInput = document.getElementById("binInput");
+                const outputLocation = document.getElementById("testingOutput");
+                const outputText = document.getElementById("testingOutputText");
+
+                // Create a listener event
+                form.addEventListener('submit', function(event) {
+                    // Stop the page from refreshing during function
+                    event.preventDefault();
+                    // Create variable of input
+                    const binaryValue = binaryInput.value;
+                    // Set output to equal the input into our function
+                    outputText.textContent = bin2dec(binaryValue);
+                    // Display styling
+                    outputLocation.style.display = 'block';
+                    // Turn out input field blank
+                    binaryInput.value = '';
+                });
+            }
+            // Create main function
+            function main() {
+                takeInput();
+            }
+            // Run Program
+            main()
+        </script>
+
+        <div class="bubble">
+            <h2>Here is the code in Python</h2>
+            <p>I originally did this in Python as it was a language I am already familar with, but I found this as an opportunity to learn <em>Javascript.</em></p>
+            <div class="code">
+                <ol>
+                    <li></li>
+                    
+                </ol>
+            </div>
+            
+            <h2>Here is the code in JavaScript</h2>
+            <div class="code">
+                <ol>
+                    <li>// Create a function to check if the input is a binary number</li>
+                    <li>checkIfBin(binaryValue) {</li>
+                    <li  style="padding-left: 30px;" class="comment">// Run a for loop through each character in the string</li>
+                    <li  style="padding-left: 30px;">for (let i = 0; i < binaryValue.length; i = i + 1) {</li>
+                    <li  style="padding-left: 50px;" class="comment">// Return 1 on success, 0 on fail</li>
+                    <li  style="padding-left: 50px;">if (Number(binaryValue[i]) <= 1 & Number(binaryValue[i]) >= 0) {</li>
+                    <li  style="padding-left: 70px;">return 1;</li>
+                    <li  style="padding-left: 50px;">}</li>
+                    <li  style="padding-left: 50px;">else {</li>
+                    <li  style="padding-left: 70px;">return 0;</li>
+                    <li  style="padding-left: 50px;">}</li>
+                    <li  style="padding-left: 30px;">}</li>
+                    <li>}</li>
+                    <li></li>
+                    <li>// Function to convert binary number into integer</li>
+                    <li>function bin2dec(binaryValue) {</li>
+                    <li  style="padding-left: 30px;" class="comment">// Run binary number check</li>
+                    <li  style="padding-left: 30px;">if (checkIfBin(binaryValue) == 1) {</li>
+                    <li  style="padding-left: 50px;" class="comment">// Establish variables into memory</li>
+                    <li  style="padding-left: 50px;">let i = 0;</li>
+                    <li  style="padding-left: 50px;">let output = 0;</li>
+                    <li  style="padding-left: 50px;" class="comment">// while loop that only iterates the amount of times for the char length of string</li>
+                    <li  style="padding-left: 50px;">while(i < binaryValue.length) {</li>
+                    <li  style="padding-left: 70px;" class="comment">// Binary conversion function</li>
+                    <li  style="padding-left: 70px;">output = output + (Number(binaryValue[i]) * (2 ** (binaryValue.length - i - 1)));</li>
+                    <li  style="padding-left: 70px;">i = i + 1;</li>
+                    <li  style="padding-left: 50px;">}</li>
+                    <li  style="padding-left: 50px;">return "Output: " + output;</li>
+                    <li  style="padding-left: 30px;">}</li>
+                    <li  style="padding-left: 30px;" class="comment">// Error Message</li>
+                    <li  style="padding-left: 30px;">else {</li>
+                    <li  style="padding-left: 50px;">return "ERROR: Please Input a binary number."</li>
+                    <li  style="padding-left: 30px;">}</li>
+                    <li>}</li>
+                    <li></li>
+                    <li class="comment">// Create input function from form</li>    
+                    <li>function takeInput() {</li>
+                    <li style="padding-left: 30px;" class="comment">// Establish variables into memory</li>
+                    <li style="padding-left: 30px;">const form = document.getElementById("testForm");</li>
+                    <li style="padding-left: 30px;">const binaryInput = document.getElementById("binInput");</li>
+                    <li style="padding-left: 30px;">const outputLocation = document.getElementById("testingOutput");</li>
+                    <li style="padding-left: 30px;">const outputText = document.getElementById("testingOutputText");</li>
+                    <li style="padding-left: 30px;" class="comment">// Create a listener event</li>
+                    <li style="padding-left: 30px;">form.addEventListener('submit', function(event) {</li>
+                    <li style="padding-left: 50px;" class="comment">// Stop the page from refreshing during function</li>
+                    <li style="padding-left: 50px;">event.preventDefault();</li>
+                    <li style="padding-left: 50px;" class="comment">// Create variable of input</li>
+                    <li style="padding-left: 50px;">const binaryValue = binaryInput.value;</li>
+                    <li style="padding-left: 50px;" class="comment">// Set output to equal the input into our function</li>
+                    <li style="padding-left: 50px;">outputText.textContent = bin2dec(binaryValue);</li>
+                    <li style="padding-left: 50px;" class="comment">// Display styling</li>
+                    <li style="padding-left: 50px;">outputLocation.style.display = 'block';</li>
+                    <li style="padding-left: 50px;" class="comment">// Turn out input field blank</li>
+                    <li style="padding-left: 50px;">binaryInput.value = '';</li>
+                    <li style="padding-left: 30px;">});</li>
+                    <li>}</li>
+                    <li></li>
+                    <li class="comment">// Create main function</li>
+                    <li>function main() {</li>
+                    <li style="padding-left: 30px;">takeInput();</li>
+                    <li>}</li>
+                    <li></li>
+                    <li class="comment">// Run Program</li>
+                    <li>main()</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <p>This project is to complete <em>Github User: <a href="https://github.com/florinpop17/app-ideas">florin17's app-ideas Repo</a></em></p>
+        <p>This project will be completed in as many different languages possible</p>
+    </footer>
+</body>
+</html>
