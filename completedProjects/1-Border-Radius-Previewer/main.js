@@ -81,22 +81,41 @@ function takeInputBorderType(cssOutput) {
         renderCSSOutput(cssOutput);
     });
 }
+// remake this function to just hold onto the value to send to takeInputBorderRadiusChoice
+function takeInputBorderRadius() {
+    const formBorderRadius = document.getElementById("formBorderRadius");
+    let borderRadius = "";
 
-function takeInputBorderRadius(cssOutput) {
+    formBorderRadius.addEventListener("input", () => {
+        borderRadius = formBorderRadius.borderRadiusInput.value.trim();
+    });
+
+    return () => borderRadius;
+}
+function takeInputBorderRadiusChoice(cssOutput, getBorderRadius) {
+    const formBorderRadiusChoice = document.getElementById("formBorderRadiusChoice");
     const formBorderRadius = document.getElementById("formBorderRadius");
     const outputContainer = document.getElementById("outputContainer");
     const outputContainer2 = document.getElementById("outputContainer2");
 
-    formBorderRadius.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const borderRadius = formBorderRadius.borderRadiusInput.value.trim();
+    formBorderRadiusChoice.addEventListener("change", () => {
+        const selectedCorners = Array.from(formBorderRadiusChoice.querySelectorAll("input:checked")).map(input => input.value);
+        const borderRadius = getBorderRadius();
 
-        if (borderRadius) {
-            outputContainer.style.borderRadius = borderRadius;
-            outputContainer2.style.borderRadius = borderRadius;
-            cssOutput["border-radius"] = borderRadius;
-        } else {
-            delete cssOutput["border-radius"];
+        if (borderRadius && selectedCorners.length > 0) {
+            const cornerStyles = {
+                "bottom-left": "border-bottom-left-radius",
+                "bottom-right": "border-bottom-right-radius",
+                "top-left": "border-top-left-radius",
+                "top-right": "border-top-right-radius"
+            };
+
+            selectedCorners.forEach(corner => {
+                const property = cornerStyles[corner];
+                outputContainer.style[property] = borderRadius;
+                outputContainer2.style[property] = borderRadius;
+                cssOutput[property] = borderRadius;
+            });
         }
 
         renderCSSOutput(cssOutput);
@@ -108,7 +127,16 @@ function output() {
     takeInputColorset(cssOutput);
     takeInputBorderSize(cssOutput);
     takeInputBorderType(cssOutput);
-    takeInputBorderRadius(cssOutput);
+    const getBorderRadius = takeInputBorderRadius();
+    takeInputBorderRadiusChoice(cssOutput, getBorderRadius);
 }
-
-output();
+// create a function to initialize all the input handlers and set up the CSS output rendering
+function initialize() {
+    // if nothing is selected just set the border up as a solid 5px black outline.
+    const outputContainer = document.getElementById("outputContainer");
+    const outputContainer2 = document.getElementById("outputContainer2");
+    outputContainer.style.border = "5px solid black";
+    outputContainer2.style.border = "5px solid black";
+    output();
+}
+initialize();
