@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="styleCalc.css">
+    <script src="main.js" defer></script>
     <title>Calculator App</title>
 </head>
 <body>
@@ -22,13 +25,52 @@
         <h2>80 Days, 80 Projects</h2><hr>
         <h3>Calculator App</h3>
         <ul>
-            <li>DATE: 11-6-26</li>
-            <li>PROJECT #: 8080-002</li>
+            <li>DATE: <em>Start</em> 11-6-26</li>
+            <li>DATE: <em>Finish</em> 11-xx-26</li>
+            <li>PROJECT #: 8080-003</li>
             <li>This project is a simple calculator app that allows users to perform basic arithmetic operations such as addition, subtraction, multiplication, and division.</li>
         </ul>
     </div>
-    <div class="calculatorContainer">
-        
+    <div id="calculatorContainer">
+        <div id="display">
+            <h1 style="font-family: monospace;" id="calulatorOutput"></h1>
+        </div>
+        <div class="label">
+            <h3>In-Browser Calulator</h3>
+            <h5><em>by JakeTech</em></h5>
+        </div>
+        <table id="buttonTable">
+            <!-- Clickable calculator buttons where the data goes to the screen display-->
+            <tr>
+                <td><button id="7" name="buttons" value=7>7</button></td>
+                <td><button id="8" name="buttons" value=8>8</button></td>
+                <td><button id="9" name="buttons" value=9>9</button></td>
+                <td><button id="/" name="buttons" value="/">/</button></td>
+            </tr>
+            <tr>
+                <td><button id="4" name="buttons" value=4>4</button></td>
+                <td><button id="5" name="buttons" value=5>5</button></td>
+                <td><button id="6" name="buttons" value=6>6</button></td>
+                <td><button id="*" name="buttons" value="*">*</button></td>
+            </tr>
+            <tr>
+                <td><button id="1" name="buttons" value=1>1</button></td>
+                <td><button id="2" name="buttons" value=2>2</button></td>
+                <td><button id="3" name="buttons" value=3>3</button></td>
+                <td><button id="-" name="buttons" value="-">-</button></td>
+            </tr>
+            <tr>
+                <td><button id="0" name="buttons" value=0>0</button></td>
+                <td><button id="." name="buttons" value=".">.</button></td>
+                <td><button id="C" name="buttons" value="C">C</button></td>
+                <td><button id="+" name="buttons" value="+">+</button></td>
+            </tr>
+        </table>
+        <table id="enter">
+            <tr>
+                <td><button id="Enter" name="buttons" value="Enter">Enter</button></td>
+            </tr>
+        </table>
     </div>
 </div>
 <footer>

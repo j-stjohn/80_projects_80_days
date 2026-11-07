@@ -1,0 +1,148 @@
+:root {
+    --panel-base: #d9d9d9;
+    --panel-shadow: #b1b1b1;
+    --panel-edge: #8a8a8a;
+    --display-bg: #1a1d1f;
+    --display-ribbon: #0e1012;
+    --display-text: #edf0f3;
+    --key-bg: #efefef;
+    --key-edge: #a0a0a0;
+    --key-shadow: #7b7b7b;
+    --key-operator: #cfcfcf;
+    --key-text: #1a1a1a;
+}
+
+
+#calculatorContainer {
+    width: min(420px, 92vw);
+    margin: 28px auto;
+    padding: 14px 14px 12px;
+    background: linear-gradient(180deg, #d7d7d7 0%, #c7c7c7 100%);
+    border: 1px solid var(--panel-edge);
+    border-radius: 10px;
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(0, 0, 0, 0.06), 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+#calculatorContainer #display {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    min-height: 74px;
+    margin: 0 0 14px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    background: linear-gradient(180deg, #1d1f21 0%, #090b0d 100%);
+    border: 2px solid rgba(8, 8, 8, 0.92);
+    border-radius: 6px;
+    box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.03), inset 0 0 10px rgba(0, 0, 0, 0.9);
+}
+
+#calulatorOutput {
+    margin: 0;
+    width: 100%;
+    text-align: right;
+    font-family: "Courier New", Courier, monospace;
+    font-size: clamp(1.9rem, 3.7vw, 2.7rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--display-text);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.label {
+    margin: 0 0 12px;
+    padding: 10px 12px;
+    text-align: center;
+    color: #1d1d1d;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+}
+
+.label h3,
+.label h5 {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.label h3 {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+
+.label h5 {
+    font-size: 0.64rem;
+    color: #3a3a3a;
+}
+
+#buttonTable,
+#enter {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 8px;
+}
+
+#buttonTable td,
+#enter td {
+    padding: 0;
+}
+
+button[name="buttons"] {
+    width: 100%;
+    height: 52px;
+    border: 1px solid var(--key-edge);
+    border-radius: 6px;
+    background: linear-gradient(180deg, var(--key-bg) 0%, #d8d8d8 100%);
+    color: var(--key-text);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), inset 0 -1px 0 rgba(0, 0, 0, 0.08), 0 1px 0 rgba(0, 0, 0, 0.1);
+    transition: transform 0.08s ease, filter 0.15s ease, box-shadow 0.15s ease;
+}
+
+button[name="buttons"]:hover {
+    filter: brightness(1.02);
+}
+
+button[name="buttons"]:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+button[name="buttons"][value="C"],
+button[name="buttons"][value="Enter"] {
+    background: linear-gradient(180deg, #f2f2f2 0%, #cbcbcb 100%);
+}
+
+button[name="buttons"][value="/"],
+button[name="buttons"][value="*"],
+button[name="buttons"][value="-"],
+button[name="buttons"][value="+"] {
+    background: linear-gradient(180deg, #d4d4d4 0%, #b4b4b4 100%);
+}
+
+#enter button {
+    height: 58px;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 500px) {
+    #calculatorContainer {
+        padding: 14px 10px 10px;
+    }
+
+    button[name="buttons"] {
+        height: 48px;
+        font-size: 1.1rem;
+    }
+}
