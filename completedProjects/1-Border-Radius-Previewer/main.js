@@ -79,6 +79,7 @@ function takeInputBorderType(cssOutput) {
         outputContainer2.style.borderStyle = borderType;
         cssOutput["border-style"] = borderType;
         renderCSSOutput(cssOutput);
+        
     });
 }
 // remake this function to just hold onto the value to send to takeInputBorderRadiusChoice
@@ -101,8 +102,9 @@ function takeInputBorderRadiusChoice(cssOutput, getBorderRadius) {
     formBorderRadiusChoice.addEventListener("change", () => {
         const selectedCorners = Array.from(formBorderRadiusChoice.querySelectorAll("input:checked")).map(input => input.value);
         const borderRadius = getBorderRadius();
-
-        if (borderRadius && selectedCorners.length > 0) {
+        // if a corner gets unchecked, we need to reset the border radius for that corner to 0px. If no corners are selected, we should set the border radius for all corners to 0px.
+        if (selectedCorners.length === 0) {
+            // Check each corner if it was previously set and reset it to 0px if it was.
             const cornerStyles = {
                 "bottom-left": "border-bottom-left-radius",
                 "bottom-right": "border-bottom-right-radius",
@@ -110,15 +112,35 @@ function takeInputBorderRadiusChoice(cssOutput, getBorderRadius) {
                 "top-right": "border-top-right-radius"
             };
 
-            selectedCorners.forEach(corner => {
-                const property = cornerStyles[corner];
-                outputContainer.style[property] = borderRadius;
-                outputContainer2.style[property] = borderRadius;
-                cssOutput[property] = borderRadius;
+            Object.values(cornerStyles).forEach(property => {
+                if (outputContainer.style[property] !== "") {
+                    outputContainer.style[property] = "0px";
+                    outputContainer2.style[property] = "0px";
+                    cssOutput[property] = "0px";
+                }
             });
+            renderCSSOutput(cssOutput);
+        } 
+        else {
+            if (borderRadius && selectedCorners.length > 0) {
+                const cornerStyles = {
+                    "bottom-left": "border-bottom-left-radius",
+                    "bottom-right": "border-bottom-right-radius",
+                    "top-left": "border-top-left-radius",
+                    "top-right": "border-top-right-radius"
+                };
+
+                selectedCorners.forEach(corner => {
+                    const property = cornerStyles[corner];
+                    outputContainer.style[property] = borderRadius;
+                    outputContainer2.style[property] = borderRadius;
+                    cssOutput[property] = borderRadius;
+                });
+            }
+            renderCSSOutput(cssOutput);
         }
 
-        renderCSSOutput(cssOutput);
+        
     });
 }
 
